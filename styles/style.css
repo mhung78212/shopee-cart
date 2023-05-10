@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .header-bg {
+        background: linear-gradient(
+            180deg,
+            rgb(249, 78, 48) 0%,
+            rgb(255, 100, 51) 100%
+        );
+    }
+}
+@layer utilities {
+    .icon-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .fly-item{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+        padding: 3px;
+        border-radius: 50%;
+        @apply bg-whitesmoke;
+        @apply text-black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 50%;
+        border: 0;
+        z-index: 99;
+        text-align: center;
+        box-shadow: 0 0 30px 0 rgba(156, 156, 156, 0.25);
+        color: #fff;
+        @apply bg-orange;
+        display: none;
+    }
+    .back-to-top.show{
+        display: block;
+    }
+}
