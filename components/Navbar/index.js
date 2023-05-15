@@ -7,14 +7,17 @@ import {
     AiOutlineUser,
     AiOutlineShoppingCart,
 } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { getAllCategories } from "@/store/categorySlice";
 
 const Navbar = () => {
+    const categories = useSelector(getAllCategories);
     return (
         <div className="py-3">
             <div className="flex items-center justify-between">
-                <div>
+                <Link href={"/"}>
                     <Image src={Logo} alt="Logo" />
-                </div>
+                </Link>
                 <div className="w-full">
                     <div className="p-1 rounded-sm ml-8 bg-white mb-2 shadow">
                         <form action="" className="flex items-center space-x-4">
@@ -31,31 +34,14 @@ const Navbar = () => {
                             </Link>
                         </form>
                     </div>
-                    <ul className="font-normal font-manrope text-[12px] ml-8 flex items-center space-x-3">
-                        <li>
-                            <Link href={"#"}>Smartphones</Link>
-                        </li>
-                        <li>
-                            <Link href={"#"}>Laptops</Link>
-                        </li>
-                        <li>
-                            <Link href={"#"}>Fragrances</Link>
-                        </li>
-                        <li>
-                            <Link href={"#"}>Skincare</Link>
-                        </li>
-                        <li>
-                            <Link href={"#"}>Groceries</Link>
-                        </li>
-                        <li>
-                            <Link href={"#"}>Home Decoration</Link>
-                        </li>
-                        <li>
-                            <Link href={"#"}>Furniture</Link>
-                        </li>
-                        <li>
-                            <Link href={"#"}>Tops</Link>
-                        </li>
+                    <ul className="font-normal font-manrope text-[12px] ml-8 flex items-center space-x-3 capitalize">
+                        {categories.slice(0, 8).map((category, index) => (
+                            <li key={index}>
+                                <Link href={`/category/${category}`}>
+                                    {category.replace("-", " ")}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 

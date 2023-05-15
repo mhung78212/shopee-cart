@@ -3,13 +3,13 @@ import { FooterSetionData } from "./FooterSetionData";
 import { FaFacebookF, FaInstagram, FaTwitch, FaYoutube } from "react-icons/fa";
 const Footer = () => {
     return (
-        <div className="pt-6 border-t-4 border-lightorange">
+        <div className="pt-6 border-t-4 border-lightorange ">
             <div className="container px-12 ">
                 <div className="row">
-                    <div className="col col-7">
+                    <div className="col col-3-4">
                         <div className="row">
                             {FooterSetionData.map((data) => (
-                                <div key={data.label} className="col col-4">
+                                <div key={data.label} className="col col-1-4">
                                     <h3 className="text-base font-bold uppercase">
                                         {data.label}
                                     </h3>
@@ -27,7 +27,7 @@ const Footer = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="col col-3">
+                    <div className="col col-1-4">
                         <div>
                             <h3 className="text-base font-bold uppercase">
                                 About Us

@@ -10,6 +10,7 @@ module.exports = {
             fontFamily: {
                 manrope: ["Manrope", "sans-serif"],
                 poppins: ["Poppins", "san-serif"],
+                rajdhani: ['Rajdhani','san-serif'],
             },
             colors: {
                 black: "#000",

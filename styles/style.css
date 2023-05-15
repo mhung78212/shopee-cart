@@ -18,7 +18,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    .fly-item{
+    .fly-item {
         position: absolute;
         width: 20px;
         height: 20px;
@@ -48,7 +48,58 @@
         @apply bg-orange;
         display: none;
     }
-    .back-to-top.show{
+    .back-to-top.show {
         display: block;
+    }
+    .product-meta {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 20px;
+        bottom: 40%;
+        font-size: 20px;
+        gap: 10px;
+        transition: all 300ms linear;
+    }
+    .product-meta .product-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        border: 1px solid #ededed;
+        transition: all 300ms linear;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(100%);
+    }
+    .product-meta:hover .product-icon {
+        background-color: #3d3d3d;
+        color: #fff;
+    }
+    .product-meta:hover .product-icon:hover {
+        background-color: #f2a100;
+        border-color: #f2a100;
+    }
+    .product-meta .product-icon:last-child {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .product-meta:hover .product-icon:not(:last-child) {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .product-meta .product-icon:nth-child(1) {
+        -webkit-transition-delay: 500ms;
+        -o-transition-delay: 500ms;
+        transition-delay: 500ms;
+    }
+    .product-meta .product-icon:nth-child(2) {
+        -webkit-transition-delay: 300ms;
+        -o-transition-delay: 300ms;
+        transition-delay: 300ms;
     }
 }
