@@ -7,17 +7,26 @@ import {
     AiOutlineUser,
     AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { useSelector } from "react-redux";
-import { getAllCategories } from "@/store/categorySlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories, getAllCategories } from "@/store/categorySlice";
+import { useEffect } from "react";
 
 const Navbar = () => {
     const categories = useSelector(getAllCategories);
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchCategories());
+    }, [dispatch]);
+
     return (
         <div className="py-3">
             <div className="flex items-center justify-between">
-                <Link href={"/"}>
-                    <Image src={Logo} alt="Logo" />
-                </Link>
+                <div className="flex items-center justify-between space-x-4">
+                    <Link href={"/"}>
+                        <Image src={Logo} alt="Logo" />
+                    </Link>
+                </div>
                 <div className="w-full">
                     <div className="p-1 rounded-sm ml-8 bg-white mb-2 shadow">
                         <form action="" className="flex items-center space-x-4">

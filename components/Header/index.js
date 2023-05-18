@@ -34,7 +34,6 @@ const Header = () => {
                         </ul>
                     </div>
                     <Navbar />
-                    
                 </div>
             </div>
         </div>

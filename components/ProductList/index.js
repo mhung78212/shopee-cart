@@ -1,22 +1,20 @@
 import Product from "../Product";
 import Link from "next/link";
 import { FaTh, FaList } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, getAllProducts } from "@/store/productSlice";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getAllProducts } from "@/store/productSlice";
 const ProductList = () => {
-    const [isCheck, setIsCheck] = useState(true);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchProducts(12));
-    }, [dispatch]);
     const products = useSelector(getAllProducts);
+    const [isCheck, setIsCheck] = useState(true);
+
     return (
         <>
             <div className="row items-center justify-between bg-whitesmoke px-4 py-3">
                 <p className="text-[18px] text-[#6c6c6c] uppercase">
                     <span className="text-lightorange">12</span> Product Found
-                    of <span className="text-lightorange">30</span>
+                    of{" "}
+                    <span className="text-lightorange">{products?.length}</span>
                 </p>
                 <div className="flex space-x-2">
                     <Link
@@ -50,7 +48,9 @@ const ProductList = () => {
             </div>
             <div className="row">
                 {products.map((product) => (
-                    <Product key={product.id} product={product} />
+                    <div key={product.id} className={`col col-1-3 mt-4`}>
+                        <Product product={product} />
+                    </div>
                 ))}
             </div>
         </>
