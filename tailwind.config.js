@@ -10,7 +10,7 @@ module.exports = {
             fontFamily: {
                 manrope: ["Manrope", "sans-serif"],
                 poppins: ["Poppins", "san-serif"],
-                rajdhani: ['Rajdhani','san-serif'],
+                rajdhani: ["Rajdhani", "san-serif"],
             },
             colors: {
                 black: "#000",
@@ -22,7 +22,6 @@ module.exports = {
                 dark: "#212529",
                 danger: "#DC3545",
                 gray: "#929292",
-               
             },
             container: {
                 center: true,

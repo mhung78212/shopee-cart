@@ -1,8 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
+import { addToCart, setCartMessage } from "@/store/cartSlice";
+import { formatPrice, toastSuccess } from "@/utils/helper";
 import Link from "next/link";
 import { BsHeart, BsSearch, BsMinecart } from "react-icons/bs";
+import { useDispatch } from "react-redux";
 
 const Product = ({ product }) => {
+    const dispatch = useDispatch();
+    const discountedPrice =
+        product?.price - product?.price * (product?.discountPercentage / 100);
+    const handleAddToCart = (product) => {
+        let quantity = 1;
+        let totalPrice = discountedPrice * quantity;
+        dispatch(
+            addToCart({
+                ...product,
+                quantity,
+                discountedPrice,
+                totalPrice,
+            }),
+        );
+        dispatch(setCartMessage);
+
+        toastSuccess(product.title)
+    };
+
     return (
         <div className="bg-white">
             <div className="h-[350px]">
@@ -21,7 +43,14 @@ const Product = ({ product }) => {
                     </h3>
                 </Link>
 
-                <span className="text-lightorange pb-4">${product.price}</span>
+                <div className=" pb-4 flex items-center space-x-2">
+                    <span className="text-lightorange">
+                        {formatPrice(discountedPrice)}
+                    </span>
+                    <span className="line-through text-gray">
+                        {formatPrice(product.price)}
+                    </span>
+                </div>
 
                 <ul className="product-meta">
                     <li className="product-icon">
@@ -34,7 +63,10 @@ const Product = ({ product }) => {
                             <BsSearch />
                         </Link>
                     </li>
-                    <li className="product-icon">
+                    <li
+                        className="product-icon"
+                        onClick={() => handleAddToCart(product)}
+                    >
                         <Link href={"#"}>
                             <BsMinecart />
                         </Link>

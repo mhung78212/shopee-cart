@@ -1,6 +1,6 @@
 export const FooterSetionData = [
     {
-        label: "Customer Service",
+        label: "Service",
         links: [
             "Payment Methods",
             "Money-back guarantee!",

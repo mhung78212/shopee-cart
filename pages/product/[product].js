@@ -1,18 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import CartMessage from "@/components/CartMessage";
 import Loading from "@/components/Loading";
-import {
-    addToCart,
-    getCartMessageStatus,
-    setCartMessage,
-} from "@/store/cartSlice";
+import { addToCart, setCartMessage } from "@/store/cartSlice";
 import {
     fetchproductSingle,
     getProductSingle,
     getSingleProductStatus,
 } from "@/store/productSlice";
-import { formatPrice } from "@/utils/helper";
+import { formatPrice, toastSuccess } from "@/utils/helper";
 import { STATUS } from "@/utils/status";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FaMinus, FaPlus, FaShoppingCart } from "react-icons/fa";
@@ -25,37 +21,29 @@ const SingleProduct = () => {
     // get product data by product id
     const productSingle = useSelector(getProductSingle);
     const productSingleStatus = useSelector(getSingleProductStatus);
-    const cartMessageStatus = useSelector(getCartMessageStatus);
     useEffect(() => {
         if (product) {
             dispatch(fetchproductSingle(product));
         }
-        if (cartMessageStatus) {
-            setTimeout(() => {
-                dispatch(setCartMessage(false));
-            }, 2000);
-        }
-    }, [dispatch, product, cartMessageStatus]);
+    }, [dispatch, product]);
     const [quantity, setQuantity] = useState(1);
 
-    let discountedPrice =
+    const discountedPrice =
         productSingle?.price -
         productSingle?.price * (productSingle?.discountPercentage / 100);
 
     const handleAddToCart = (productSingle) => {
-        let discountPirce =
-            productSingle?.price -
-            (productSingle?.price * productSingle?.discountPercentage) / 100;
-        let totalPrice = discountPirce * quantity;
+        let totalPrice = discountedPrice * quantity;
         dispatch(
             addToCart({
                 ...productSingle,
                 quantity,
-                discountPirce,
+                discountedPrice,
                 totalPrice,
             }),
         );
-        dispatch(setCartMessage(true));
+
+        toastSuccess(productSingle.title)
     };
     return (
         <div className="bg-whitesmoke py-10">
@@ -64,7 +52,7 @@ const SingleProduct = () => {
             ) : (
                 <div className="bg-white w-[90%] p-8 m-auto">
                     <div className="row">
-                        <div className="col col-1-2">
+                        <div className="col col-1-1 md:col-1-2">
                             {/* Thumbnail */}
                             <div className="h-[500px] mb-4">
                                 <img
@@ -91,7 +79,7 @@ const SingleProduct = () => {
                                     ))}
                             </div>
                         </div>
-                        <div className="col col-1-2">
+                        <div className="col col-1-1 md:col-1-2 mt-8">
                             <h1 className="font-bold text-3xl ">
                                 {productSingle.title}
                             </h1>
@@ -122,9 +110,16 @@ const SingleProduct = () => {
                                     <span className="text-lightorange">
                                         Category:
                                     </span>
-                                    <span className="capitalize">
-                                        {productSingle.category}
-                                    </span>
+                                    <Link
+                                        href={`/category/${productSingle.category}`}
+                                    >
+                                        <span className="capitalize">
+                                            {productSingle?.category?.replace(
+                                                "-",
+                                                " ",
+                                            )}
+                                        </span>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="bg-whitesmoke p-4 my-4">
@@ -187,7 +182,6 @@ const SingleProduct = () => {
                     </div>
                 </div>
             )}
-            {cartMessageStatus && <CartMessage />}
         </div>
     );
 };

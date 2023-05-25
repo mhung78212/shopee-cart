@@ -1,5 +1,6 @@
 import ProductList from "@/components/ProductList";
 import Sidebar from "@/components/Sidebar";
+import { fetchCategories } from "@/store/categorySlice";
 import { fetchProducts } from "@/store/productSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -8,6 +9,7 @@ const Category = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchProducts(12));
+        dispatch(fetchCategories());
     }, [dispatch]);
     return (
         <div className="bg-whitesmoke py-16">

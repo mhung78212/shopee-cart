@@ -36,7 +36,7 @@ const CategorySingle = () => {
                 ) : (
                     <div className="row">
                         {categoryProducts.map((product) => (
-                            <div key={product.id} className="col col-1-4 mt-6">
+                            <div key={product.id} className="col col-1-1  md:col-1-2 lg:col-1-4 mt-6">
                                 <Product product={product} />
                             </div>
                         ))}

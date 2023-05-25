@@ -6,10 +6,10 @@ const Footer = () => {
         <div className="pt-6 border-t-4 border-lightorange ">
             <div className="container px-12 ">
                 <div className="row">
-                    <div className="col col-3-4">
+                    <div className="col col-1-1 lg:col-3-4">
                         <div className="row">
                             {FooterSetionData.map((data) => (
-                                <div key={data.label} className="col col-1-4">
+                                <div key={data.label} className="col mb-4 col-1-1 md:col-1-4">
                                     <h3 className="text-base font-bold uppercase">
                                         {data.label}
                                     </h3>
@@ -27,7 +27,7 @@ const Footer = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="col col-1-4">
+                    <div className="col hidden lg:col-1-4 lg:block">
                         <div>
                             <h3 className="text-base font-bold uppercase">
                                 About Us
