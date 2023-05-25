@@ -28,7 +28,7 @@ const CategorySingle = () => {
             <div className="w-10/12 mx-auto row">
                 <div className="bg-white w-full py-4 pl-14 text-3xl border-l-8 border-[#F94E30]">
                     <h3 className="text-[#999999] capitalize ">
-                        See our {category.replace("-", " ")}
+                        See our {category?.replace("-", " ")}
                     </h3>
                 </div>
                 {categoryProductsStatus === STATUS.LOADING ? (
