@@ -145,24 +145,24 @@ const Cart = () => {
                             ))}
                         </tbody>
                     </table>
-                    <div className=" mt-8 py-8 bg-whitesmoke">
-                        <div className="flex items-center justify-between mx-8">
-                            <button
-                                className="flex items-center px-4 py-2 border border-solid border-lightorange text-lightorange space-x-2 uppercase"
-                                onClick={() => dispatch(clearCart())}
-                            >
-                                <BsTrash2 className="text-[24px]" />
-                                <span>Clear cart</span>
-                            </button>
-                            <div>
-                                <div className="flex items-center space-x-4">
-                                    <div>Total ({cartItemCount}) items: </div>
-                                    <span>{formatPrice(cartTotal)}</span>
-                                </div>
-                                <button className="py-2 px-10 uppercase tracking-[3px] bg-lightorange text-white mt-4">
-                                    Check out
-                                </button>
+                </div>
+                <div className="mt-8 py-8 bg-whitesmoke">
+                    <div className="flex items-center justify-between mx-8 flex-wrap">
+                        <button
+                            className="flex items-center px-4 py-2 border border-solid border-lightorange text-lightorange space-x-2 uppercase mb-4"
+                            onClick={() => dispatch(clearCart())}
+                        >
+                            <BsTrash2 className="text-[24px]" />
+                            <span>Clear cart</span>
+                        </button>
+                        <div>
+                            <div className="flex items-center space-x-4">
+                                <div>Total ({cartItemCount}) items: </div>
+                                <span>{formatPrice(cartTotal)}</span>
                             </div>
+                            <button className="py-2 px-10 uppercase tracking-[3px] bg-lightorange text-white mt-4">
+                                Check out
+                            </button>
                         </div>
                     </div>
                 </div>
