@@ -10,7 +10,7 @@ const ProductList = () => {
 
     return (
         <>
-            <div className="row items-center justify-between bg-whitesmoke px-4 py-3">
+            <div className="hidden lg:flex row items-center justify-between bg-whitesmoke px-4 py-3">
                 <p className="text-[18px] text-[#6c6c6c] uppercase">
                     <span className="text-lightorange">12</span> Product Found
                     of{" "}
@@ -48,7 +48,7 @@ const ProductList = () => {
             </div>
             <div className="row">
                 {products.map((product) => (
-                    <div key={product.id} className={`col col-1-3 mt-4`}>
+                    <div key={product.id} className={`col col-1-1 md:col-1-2 lg:col-1-3 mt-4`}>
                         <Product product={product} />
                     </div>
                 ))}

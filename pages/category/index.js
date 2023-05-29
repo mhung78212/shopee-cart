@@ -15,10 +15,10 @@ const Category = () => {
         <div className="bg-whitesmoke py-16">
             <div className="container px-10 ">
                 <div className="row">
-                    <div className="col col-1-4">
+                    <div className="col hidden lg:block lg:col-1-4">
                         <Sidebar />
                     </div>
-                    <div className="col col-3-4">
+                    <div className="col col-1-1 lg:col-3-4">
                         <ProductList />
                     </div>
                 </div>
